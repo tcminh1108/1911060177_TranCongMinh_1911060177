@@ -38,7 +38,6 @@
                                         <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow?</button>
                                     }
                                 </span>
-
                             }
                         }
 
@@ -74,25 +73,22 @@
             $(document).ready(function () {
                 $(".js-toggle-attendance").click(function (e) {
                     var button = $(e.target);
-
                     $.post("/api/attendances", { courseId: button.attr("data-course-id") })
                         .done(function (response) {
                             if (response.isFollow) {
                                 button.removeClass("btn-default")
                                     .addClass("btn-info")
                                     .text("Going");
-
                             }
                             else {
                                 button.removeClass("btn-info")
                                     .addClass("btn-default")
                                     .text("Going?");
                             }
-
                         })
                         .fail(
                             function () {
-                                alert("Songthing failed!");
+                                alert("Something failed!");
                             });
                 });
                 $(".js-toggle-follow").click(function (e) {
@@ -124,7 +120,7 @@
                         })
                         .fail(
                             function () {
-                                alert("Songthing failed!");
+                                alert("Some failed!");
                             });
                 });
             })
