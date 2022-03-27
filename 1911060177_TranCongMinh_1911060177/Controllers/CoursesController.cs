@@ -59,10 +59,18 @@ namespace _1911060177_TranCongMinh_1911060177.Controllers
                 .Include(l => l.Lecturer)
                 .Include(l => l.Category)
                 .ToList();
+            var isFollowCourses = _dbContext.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Include(c => c.Course);
+            var isFollowLecturers = _dbContext.Followings
+                .Where(a => a.FollowerId == userId)
+                .Include(c => c.Followee);
             var viewModel = new CoursesViewModel
             {
                 UpcommingCourses = courses,
-                ShowAction = User.Identity.IsAuthenticated
+                ShowAction = User.Identity.IsAuthenticated,
+                IsFollowCourses = isFollowCourses,
+                IsFollowLecturers = isFollowLecturers,
             };
             return View(viewModel);
         }

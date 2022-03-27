@@ -22,16 +22,23 @@ namespace _1911060177_TranCongMinh_1911060177.Controllers
         public IHttpActionResult Attend(AttendanceDto attendanceDto)
         {
             var userId = User.Identity.GetUserId();
-            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
-                return BadRequest("The Attendance already exists!");
             var attendance = new Attendance
             {
                 CourseId = attendanceDto.CourseId,
                 AttendeeId = userId
             };
+
+            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
+            {
+
+                //_dbContext.Attendances.Remove(attendance);
+                _dbContext.Entry(attendance).State = System.Data.Entity.EntityState.Deleted;
+                _dbContext.SaveChanges();
+                return Json(new { isFollow = false });
+            }
             _dbContext.Attendances.Add(attendance);
             _dbContext.SaveChanges();
-            return Ok();
+            return Json(new { isFollow = true });
         }
     }
 }

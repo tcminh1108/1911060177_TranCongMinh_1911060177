@@ -10,5 +10,7 @@ namespace _1911060177_TranCongMinh_1911060177.ViewModels
     {
         public IEnumerable<Course> UpcommingCourses { get; set; }
         public bool ShowAction { get; set; }
+        public IEnumerable<Attendance> IsFollowCourses { get; set; }
+        public IEnumerable<Following> IsFollowLecturers { get; set; }
     }
 }
