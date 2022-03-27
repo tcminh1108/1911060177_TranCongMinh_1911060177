@@ -27,20 +27,15 @@
                         @if (Model.ShowAction && !course.IsCanceled)
                         {
                             <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
-
                         }
-
-                    </span>
-                    <span class="category">
-                        @course.Category.Name
-                    </span>
-                    @if (Model.ShowAction)
-                    {
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-
-                    }
-
+                    </span>   
+                    <div>
+                        <span class="category">
+                            @course.Category.Name
+                        </span>
+                    </div>
                 </div>
+                
             </li>
         }
     </ul>
