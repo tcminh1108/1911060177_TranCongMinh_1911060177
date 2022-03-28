@@ -23,6 +23,10 @@
                 </span>
                 <span class="category">
                     @course.Category.Name
+                    @if (course.IsCanceled)
+                    {
+                        <span class="label label-warning">Canceled</span>
+                    }
                 </span>
                 <div class="action">
                     <a href="@Url.Action("Edit", "Courses", new { id = course.Id})">Edit</a> |
