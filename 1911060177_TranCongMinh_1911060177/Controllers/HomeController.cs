@@ -12,6 +12,7 @@ namespace _1911060177_TranCongMinh_1911060177.Controllers
 {
     public class HomeController : Controller
     {
+        //commit nộp bài ngày 28/03/2022
         private ApplicationDbContext _dbContext;
         public HomeController()
         {
